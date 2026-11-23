@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anandhu P S – Data Scientist & AI/ML Engineer</title>
+<meta name="description" content="Portfolio of Anandhu P S: NLP, transformers, ONNX inference, LLM summarization and classical machine learning projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1DE; --surface:#FBF9EE; --ink:#0D1B2A; --muted:#415A77; --line:#D4C4A8;
+  --accent:#415A77; --accent-ink:#F4F1DE; --mark:#D4C4A8; --sage:#778D7A; --btn:#1B263B;
+  --head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0D1B2A; --surface:#1B263B; --ink:#F4F1DE; --muted:#D4C4A8; --line:#415A77; --accent:#D4C4A8; --accent-ink:#0D1B2A; --mark:#415A77; --sage:#778D7A; --btn:#D4C4A8;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.75rem;padding-bottom:.75rem}
+.brand{font:700 1.1rem var(--head);text-decoration:none}
+.nav nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-size:.95rem}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.hero{padding:4.5rem 0 3rem}
+.hero h1{font:800 clamp(2.6rem,8vw,5.2rem)/1 var(--head);letter-spacing:-.03em;margin:0 0 1rem}
+.hero .role{font:500 clamp(1.15rem,3vw,1.5rem) var(--head);color:var(--accent);margin:0 0 1.25rem}
+.hero p.lead{max-width:40rem;color:var(--muted);margin:0 0 1.75rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:.5rem;font-weight:500;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--btn);color:#F4F1DE;border-color:var(--btn)}
+@media (prefers-color-scheme:dark){.btn.primary{color:#0D1B2A}}
+.btn:hover{transform:translateY(-1px)}
+/* the one memorable element: a pipeline strip taken from the real inference project */
+.pipe{margin-top:2.75rem;display:flex;align-items:stretch;flex-wrap:wrap;gap:0;border:1.5px solid var(--ink);border-radius:.75rem;overflow:hidden;background:var(--surface)}
+.pipe div{flex:1 1 9rem;padding:.9rem 1rem;border-right:1.5px solid var(--line);border-top:4px solid var(--sage)}
+.pipe div:last-child{border-right:0}
+.pipe b{display:block;font:700 1rem var(--head)}
+.pipe span{font-size:.85rem;color:var(--muted)}
+.pipe-cap{font-size:.85rem;color:var(--muted);margin:.6rem 0 0}
+section{padding:3.25rem 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(1.6rem,4vw,2.2rem)/1.15 var(--head);letter-spacing:-.02em;margin:0 0 1.5rem}
+h3{font:700 1.25rem/1.3 var(--head);margin:0 0 .35rem}
+.projects{display:grid;gap:1.25rem}
+.proj{display:grid;grid-template-columns:1fr;gap:.5rem 2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:.75rem}
+.proj.featured{border:1.5px solid var(--ink)}
+.proj ul{margin:.5rem 0 0;padding-left:1.15rem;max-width:42rem}
+.proj li{margin:.3rem 0}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 0;padding:0;list-style:none}
+.tags li{margin:0;padding:.15rem .6rem;color:var(--ink);background:var(--mark);border-radius:99px;font-size:.82rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem 2rem}
+.skills h3{font-size:1.05rem}
+.skills p{margin:0;color:var(--muted)}
+.job{max-width:44rem}
+.job .when{color:var(--muted);font-size:.95rem;margin:0 0 .5rem}
+.job ul{padding-left:1.15rem;margin:.5rem 0}
+.job li{margin:.3rem 0}
+.timeline{list-style:none;margin:0;padding:0;max-width:44rem}
+.timeline li{display:grid;grid-template-columns:9.5rem 1fr;gap:.25rem 1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.timeline .d{color:var(--muted);font-size:.95rem}
+.timeline strong{display:block}
+.icons{display:flex;flex-wrap:wrap;gap:.9rem;list-style:none;padding:0;margin:0 0 1.25rem}
+.icons a{display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);transition:background .15s,color .15s}
+.icons a:hover{background:var(--sage);border-color:var(--sage);color:#0D1B2A}
+.icons svg{width:1.5rem;height:1.5rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icons svg.fill{fill:currentColor;stroke:none}
+.loc{display:flex;align-items:center;gap:.5rem;color:var(--muted);margin:0}
+.loc svg{width:1.2rem;height:1.2rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+footer{padding:2rem 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:40rem){
+  .timeline li{grid-template-columns:1fr}
+  .pipe div{border-right:0;border-bottom:1.5px solid var(--line);flex-basis:100%}
+  .pipe div:last-child{border-bottom:0}
+  .hero{padding-top:3rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Anandhu P S</a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1>Anandhu P S</h1>
+    <p class="role">Data Scientist and AI/ML Engineer</p>
+    <p class="lead">Computer Science Engineering graduate with hands-on experience in Python, machine learning, deep learning, NLP and generative AI. I build end-to-end projects, from data preprocessing to model evaluation and inference, and I train students in AI and data science at Metailearn in Kochi.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See projects</a>
+      <a class="btn" href="Anandhu_PS_Resume.pdf" download="Anandhu_PS_Resume.pdf">Download resume</a>
+      <a class="btn" href="https://github.com/Anandhu114" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/anandhups36" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <div class="pipe" role="img" aria-label="Pipeline from my question answering project: tokenization, preprocessing, PyTorch model, ONNX conversion, CPU inference">
+      <div><b>Tokenize</b><span>Structured input handling</span></div>
+      <div><b>Preprocess</b><span>Transformer-ready inputs</span></div>
+      <div><b>PyTorch</b><span>Transformer model</span></div>
+      <div><b>ONNX</b><span>Model conversion</span></div>
+      <div><b>CPU inference</b><span>Performance compared</span></div>
+    </div>
+    <p class="pipe-cap">The workflow of my Context-Aware Question Answering project.</p>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <article class="proj featured">
+          <div>
+            <h3>Context-Aware Question Answering System</h3>
+            <ul>
+              <li>Built an end-to-end transformer-based NLP inference pipeline with tokenization, preprocessing and structured input handling.</li>
+              <li>Explored PyTorch-to-ONNX model conversion and inference optimization, and evaluated performance across CPU environments.</li>
+            </ul>
+            <ul class="tags"><li>NLP</li><li>Transformers</li><li>PyTorch</li><li>ONNX</li></ul>
+          </div>
+        </article>
+
+        <article class="proj featured">
+          <div>
+            <h3>LLM-Based Text Summarization with ROUGE Evaluation</h3>
+            <ul>
+              <li>Developed an automated text summarization pipeline using Hugging Face models and evaluated summary quality with ROUGE metrics.</li>
+              <li>Optimized preprocessing for large text inputs.</li>
+            </ul>
+            <ul class="tags"><li>Generative AI</li><li>Hugging Face</li><li>ROUGE</li></ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <h3>Text Sentiment Analysis using NLP</h3>
+            <ul>
+              <li>Built a text classification model with text preprocessing and TF-IDF feature extraction.</li>
+              <li>Evaluated model performance using accuracy and a confusion matrix.</li>
+            </ul>
+            <ul class="tags"><li>TF-IDF</li><li>Logistic Regression</li><li>Scikit-learn</li></ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <h3>Bengaluru House Price Prediction</h3>
+            <ul>
+              <li>Developed and compared Linear Regression, Lasso and Decision Tree models.</li>
+              <li>Applied feature engineering and hyperparameter tuning with GridSearchCV.</li>
+            </ul>
+            <ul class="tags"><li>Regression</li><li>Scikit-learn</li></ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div>
+            <h3>Customer Segmentation and Clustering Analysis</h3>
+            <ul>
+              <li>Implemented customer segmentation with K-Means and DBSCAN, using normalization and encoding techniques.</li>
+              <li>Evaluated clustering performance with Silhouette Score.</li>
+            </ul>
+            <ul class="tags"><li>K-Means</li><li>DBSCAN</li><li>Unsupervised ML</li></ul>
+          </div>
+        </article>
+
+      </div>
+      <p style="margin-top:1.25rem">Code for these projects is on <a href="https://github.com/Anandhu114" target="_blank" rel="noopener">my GitHub</a>.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Programming</h3><p>Python, C++, C</p></div>
+        <div><h3>Machine learning</h3><p>Linear Regression, Logistic Regression, Decision Trees, K-Means, DBSCAN, Feature Engineering, Hyperparameter Tuning (GridSearchCV)</p></div>
+        <div><h3>Deep learning and GenAI</h3><p>PyTorch, TensorFlow, CNNs, Transformers, NLP, Large Language Models, Hugging Face Transformers, NLTK</p></div>
+        <div><h3>Data science</h3><p>NumPy, Pandas, Matplotlib, Scikit-learn, Data Cleaning, Exploratory Data Analysis</p></div>
+        <div><h3>Model evaluation</h3><p>Accuracy, Confusion Matrix, ROUGE, Silhouette Score</p></div>
+        <div><h3>Deployment and optimization</h3><p>REST APIs, ONNX Workflows, Model Quantization, Inference Optimization</p></div>
+        <div><h3>Tools</h3><p>Jupyter Notebook</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <div class="job">
+        <h3>AI/ML Specialist and Trainer, Metailearn</h3>
+        <p class="when">Kochi, Kerala · July 2026 to present</p>
+        <ul>
+          <li>Deliver training on Artificial Intelligence, Machine Learning and Data Science, covering Python, data preprocessing and exploratory data analysis.</li>
+          <li>Teach machine learning algorithms and real-world applications through hands-on coding sessions on model building, evaluation and performance improvement.</li>
+          <li>Mentor students on end-to-end Machine Learning and Data Science projects, troubleshoot coding issues and support learning progress.</li>
+        </ul>
+      </div>
+      <ul class="timeline" style="margin-top:1.5rem">
+        <li><span class="d">Jul to Aug 2024</span><span><strong>Cloud Computing Intern, Unique Occassio Tech</strong>Worked with cloud computing fundamentals, Microsoft Azure, web hosting and Azure virtual networks, under the guidance of an architect.</span></li>
+        <li><span class="d">Jan to Feb 2023</span><span><strong>Cyber Security and Ethical Hacking Intern, Techbyheart</strong>Gained exposure to cyber security and ethical hacking concepts.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education and certifications</h2>
+      <ul class="timeline">
+        <li><span class="d">Jan to Jul 2026</span><span><strong>Diploma, Artificial Intelligence</strong>Unique Occassio Tech, Kochi</span></li>
+        <li><span class="d">Jul to Dec 2025</span><span><strong>Diploma, Data Science with Generative AI</strong>Unique Occassio Tech, Kochi</span></li>
+        <li><span class="d">Oct 2021 to Mar 2025</span><span><strong>Bachelor of Engineering, Computer Science and Engineering</strong>Marthandam College of Engineering and Technology</span></li>
+      </ul>
+      <p style="margin-top:1.25rem">Languages: English, Malayalam, Tamil.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <ul class="icons">
+        <li><a href="mailto:anandhups3664@gmail.com" aria-label="Email anandhups3664@gmail.com" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
+        <li><a href="tel:+919061240397" aria-label="Call +91 9061240397" title="Phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/anandhups36" target="_blank" rel="noopener" aria-label="LinkedIn profile" title="LinkedIn"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.1c.5-1 1.8-1.9 3.7-1.9 4 0 4.9 2.6 4.9 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.700V21h-4z"/></svg></a></li>
+        <li><a href="https://github.com/Anandhu114" target="_blank" rel="noopener" aria-label="GitHub profile" title="GitHub"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.500c.5.1.7-.2.7-.5v-1.800c-2.800.6-3.400-1.200-3.400-1.200-.5-1.200-1.100-1.500-1.100-1.500-.9-.6.1-.6.1-.6 1 .1 1.500 1 1.500 1 .9 1.500 2.300 1.100 2.900.8.1-.7.4-1.100.6-1.400-2.200-.3-4.600-1.100-4.600-5 0-1.100.4-2 1-2.700-.1-.3-.4-1.300.1-2.700 0 0 .8-.3 2.700 1a9.300 9.300 0 0 1 5 0c1.900-1.300 2.700-1 2.700-1 .5 1.400.2 2.400.1 2.700.6.7 1 1.600 1 2.700 0 3.900-2.400 4.700-4.600 5 .4.3.7.9.7 1.900v2.800c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a></li>
+        <li><a href="https://www.instagram.com/___anandhhu?cnvx=c2VsMW03c2RsaXlu" target="_blank" rel="noopener" aria-label="Instagram profile" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a></li>
+      </ul>
+      <p class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.100 7-11a7 7 0 0 0-14 0c0 4.900 7 11 7 11z"/><circle cx="12" cy="10" r="2.500"/></svg>Kerala, India</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Anandhu P S</div>
+</footer>
+</body>
+</html>
